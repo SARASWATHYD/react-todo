@@ -9,75 +9,56 @@ import TodoItem from './components/TodoItem';
 import todoData from './todoData';
 
 
-class App extends React.Component {
-  constructor(){
-  super()
-    this.state ={
-      todos : todoData
-    }
-  }
-  render(){
-  const todoItems = this.state.todos.map(item => <TodoItem key ={item.id} item = {item}/>)
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className= "todo-list">
-     {todoItems}
-      </div>
-      {/* <Headers/>
-      <MainContent/>
-      <Footer/> */}
-      </header>
-    </div>
-  );
-}
-}
-
-// class App extends React.Component{
+// class App extends React.Component {
 //   constructor(){
-//     super()
-//     this.state = {
-//       isLoggedIn : false
-    
-//     } 
+//   super()
+//     this.state ={
+//       todos : todoData
+//     }
+  
 //   }
+ 
 //   render(){
-//     let wordDisplay;
-//     if(this.state.isLoggedIn==true)
-//     wordDisplay="in"
-//     else  wordDisplay="out"
-
-//     return (
-//       <div>
-//         <Header name ="saras"/>
-//         <Greeting/>
-//         <h1>you are currently logged {wordDisplay} </h1>
-//       </div>
-//     )
-//   }
-// }
-
-// class Header extends Component{
-//   render(){
-//     return (
-//       <header> welcome, {this.props.name} !</header>
-//     )
-//   }
-// }
-// class Greeting extends Component{
-//   render(){
-//    const date = new Date()
-//    const hours = date.getHours()
-//    let timeoffDay 
-//    if(hours < 12)
-//    timeoffDay = ("Am!")
-//    else if (hours >12)
-//    timeoffDay= ("Pm")
-
+//   const todoItems = this.state.todos.map(item => <TodoItem key ={item.id} item = {item}/>)
 //   return (
-//     <h3> Good day to you Now time {hours}{timeoffDay} </h3>
-//   )
+//     <div className="App">
+//       <header className="App-header">
+//         <div className= "todo-list">
+//      {todoItems}
+//      <button onClick = {handleClick}>  create</button>
+//       </div>
+//       {/* <Headers/>
+//       <MainContent/>
+//       <Footer/> */}
+//       </header>
+//     </div>
+//   );
 // }
 // }
+
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      count : 0
+    } 
+    this.handleClick = this.handleClick.bind(this)
+  }
+    handleClick(){
+      this.setState(prevState => {
+        return {count : prevState.count+1}
+      })
+    }
+  render(){
+    return (
+      <div>
+        <h1>{this.state.count } </h1>
+        <button onClick = {this.handleClick}> click me</button>
+      </div>
+    )
+  }
+}
+
+
 
 export default App;
