@@ -6,19 +6,19 @@ const todoData = [
 
     },
     {
-        id : 1,
+        id : 2,
         text : "Every Day Word",
         completed : false
 
     },
     {
-        id : 1,
+        id : 3,
         text : "Production",
         completed : false
 
     },
     {
-        id : 1,
+        id : 4,
         text : "Learning",
         completed : true
 
