@@ -9,44 +9,44 @@ import TodoItem from './components/TodoItem';
 import todoData from './todoData';
 
 
-class App extends React.Component {
-  constructor(){
-  super()
-    this.state ={
-      todos : todoData
-    }
-    this.handleChange = this.handleChange.bind(this)
+// class App extends React.Component {
+//   constructor(){
+//   super()
+//     this.state ={
+//       todos : todoData
+//     }
+//     this.handleChange = this.handleChange.bind(this)
 
-  }
-  handleChange(id){
-    this.setState(prevState =>{
-      const updatedTodo = prevState.todos.map(todo =>{
-        if(todo.id === id)
-          todo.completed = !todo.completed
-          return todo
-      })
-      return updatedTodo
-    })
-  }
+//   }
+//   handleChange(id){
+//     this.setState(prevState =>{
+//       const updatedTodo = prevState.todos.map(todo =>{
+//         if(todo.id === id)
+//           todo.completed = !todo.completed
+//           return todo
+//       })
+//       return updatedTodo
+//     })
+//   }
 
  
-  render(){
-  const todoItems = this.state.todos.map(item => <TodoItem key ={item.id} item = {item}
-    handleChange={this.handleChange}/>)
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className= "todo-list">
-     {todoItems}
-      </div>
-      {/* <Headers/>
-      <MainContent/>
-      <Footer/> */}
-      </header>
-    </div>
-  );
-}
-}
+//   render(){
+//   const todoItems = this.state.todos.map(item => <TodoItem key ={item.id} item = {item}
+//     handleChange={this.handleChange}/>)
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <div className= "todo-list">
+//      {todoItems}
+//       </div>
+//       {/* <Headers/>
+//       <MainContent/>
+//       <Footer/> */}
+//       </header>
+//     </div>
+//   );
+// }
+// }
 
 // class App extends React.Component{
 //   constructor(){
@@ -70,6 +70,33 @@ class App extends React.Component {
 //     )
 //   }
 // }
+class App extends React.Component{
+
+  constructor(){
+    super()
+    this.state = {
+      isLoggedIn : false
+    } 
+    this.handleClick = this.handleClick.bind(this)
+  }
+    handleClick(){
+     this.setState(prevState=>{
+       return{
+       isLoggedIn : !prevState.isLoggedIn
+       }
+     })
+    }
+  render(){
+    let buttonText = this.state.isLoggedIn ? "LOG IN" :"LOG OUT"
+    let displayText = this.state.isLoggedIn ? "Logged In" : "Logged out"
+    return (
+      <div>
+        <button onClick = {this.handleClick}>{buttonText}</button>
+        <h1>{displayText} </h1>
+      </div>
+    )
+  }
+}
 
 
 
