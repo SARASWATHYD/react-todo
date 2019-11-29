@@ -104,21 +104,26 @@ class App extends React.Component{
   constructor(){
   super()
   this.state = {
+    loading : false,
     charector : {}
   }
   }
 componentDidMount(){
+  this.setState({loading : true})
   fetch("https://swapi.co/api/people/1")
   .then(response => response.json())
   .then(data => 
     {
-      this.setState({charector:data})
+      this.setState({
+        loading : false,
+        charector:data})
     })
 }
 
 render(){
+  const displayText = this.state.loading ? "Loading ..." : this.state.charector.name
   return (
-    <div> {this.state.charector.name}</div>
+    <div> {displayText}</div>
   )
   }
 }
