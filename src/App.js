@@ -8,45 +8,46 @@ import Footer from './components/Footer';
 import TodoItem from './components/TodoItem';
 import todoData from './todoData';
 
+// //todo app with static data but date handled
+// class App extends React.Component {
+//   constructor(){
+//   super()
+//     this.state ={
+//       todos : todoData
+//     }
+//     this.handleChange = this.handleChange.bind(this)
 
-class App extends React.Component {
-  constructor(){
-  super()
-    this.state ={
-      todos : todoData
-    }
-    this.handleChange = this.handleChange.bind(this)
-
-  }
-  handleChange(id){
-    this.setState(prevState =>{
-      const updatedTodo = prevState.todos.map(todo =>{
-        if(todo.id === id)
-          todo.completed = !todo.completed
-          return todo
-      })
-      return updatedTodo
-    })
-  }
+//   }
+//   handleChange(id){
+//     this.setState(prevState =>{
+//       const updatedTodo = prevState.todos.map(todo =>{
+//         if(todo.id === id)
+//           todo.completed = !todo.completed
+//           return todo
+//       })
+//       return updatedTodo
+//     })
+//   }
 
  
-  render(){
-  const todoItems = this.state.todos.map(item => <TodoItem key ={item.id} item = {item}
-    handleChange={this.handleChange}/>)
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className= "todo-list">
-     {todoItems}
-      </div>
-      {/* <Headers/>
-      <MainContent/>
-      <Footer/> */}
-      </header>
-    </div>
-  );
-}
-}
+//   render(){
+//   const todoItems = this.state.todos.map(item => <TodoItem key ={item.id} item = {item}
+//     handleChange={this.handleChange}/>)
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <div className= "todo-list">
+//      {todoItems}
+//       </div>
+//       {/* <Headers/>
+//       <MainContent/>
+//       <Footer/> */}
+//       </header>
+//     </div>
+//   );
+// }
+// }
+// //count sample
 
 // class App extends React.Component{
 //   constructor(){
@@ -70,6 +71,7 @@ class App extends React.Component {
 //     )
 //   }
 // }
+// // checking isLoggedIn state
 // class App extends React.Component{
 
 //   constructor(){
@@ -98,6 +100,28 @@ class App extends React.Component {
 //   }
 // }
 
+class App extends React.Component{
+  constructor(){
+  super()
+  this.state = {
+    charector : {}
+  }
+  }
+componentDidMount(){
+  fetch("https://swapi.co/api/people/1")
+  .then(response => response.json())
+  .then(data => 
+    {
+      this.setState({charector:data})
+    })
+}
+
+render(){
+  return (
+    <div> {this.state.charector.name}</div>
+  )
+  }
+}
 
 
 export default App;
