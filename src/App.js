@@ -100,31 +100,61 @@ import todoData from './todoData';
 //   }
 // }
 
-class App extends React.Component{
-  constructor(){
-  super()
-  this.state = {
-    loading : false,
-    charector : {}
-  }
-  }
-componentDidMount(){
-  this.setState({loading : true})
-  fetch("https://swapi.co/api/people/1")
-  .then(response => response.json())
-  .then(data => 
-    {
-      this.setState({
-        loading : false,
-        charector:data})
-    })
-}
+// class App extends React.Component{
+//   constructor(){
+//   super()
+//   this.state = {
+//     loading : false,
+//     charector : {}
+//   }
+//   }
+// componentDidMount(){
+//   this.setState({loading : true})
+//   fetch("https://swapi.co/api/people/1")
+//   .then(response => response.json())
+//   .then(data => 
+//     {
+//       this.setState({
+//         loading : false,
+//         charector:data})
+//     })
+// }
 
-render(){
-  const displayText = this.state.loading ? "Loading ..." : this.state.charector.name
-  return (
-    <div> {displayText}</div>
-  )
+// render(){
+//   const displayText = this.state.loading ? "Loading ..." : this.state.charector.name
+//   return (
+//     <div> {displayText}</div>
+//   )
+//   }
+// }
+
+//handling form with state 
+
+ class App extends React.Component{
+    constructor(){
+      super()
+      this.state = {
+       
+      } 
+      this.handleClick = this.handleClick.bind(this)
+    }
+      handleClick(event){
+       this.setState(
+         {[event.target.name ] : event.target.value}
+       )
+      }
+    render(){
+      return(
+      <form> 
+        <input type = "text" name ="firstName" placeholder = "firstName.." onChange = {this.handleClick}/>
+        <br/>
+        <input type = "text" name ="lastName" placeholder = "lastName.." onChange = {this.handleClick}/>
+        <br/>
+
+        <h1> {this.state.firstName}</h1>
+        <h1> {this.state.lastName}</h1>
+      </form>
+      )
   }
 }
 
