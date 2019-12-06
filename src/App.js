@@ -155,8 +155,8 @@ import todoData from './todoData';
         <input type = "text" name ="lastName" placeholder = "lastName.." onChange = {this.handleClick}/>
         <br/>
 
-        <h1> {this.state.firstName}</h1>
-        <h1> {this.state.lastName}</h1>
+        <h1> {this.state.firstName} {this.state.lastName}</h1>
+       
       </form>
       )
   }
