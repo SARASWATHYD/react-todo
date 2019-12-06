@@ -9,7 +9,7 @@ import TodoItem from './components/TodoItem';
 import todoData from './todoData';
 
 // //todo app with static data but date handled
-// class App extends React.Component {
+// class ent extends React.Component {
 //   constructor(){
 //   super()
 //     this.state ={
@@ -47,6 +47,7 @@ import todoData from './todoData';
 //   );
 // }
 // }
+
 // //count sample
 
 // class App extends React.Component{
@@ -139,8 +140,11 @@ import todoData from './todoData';
       this.handleClick = this.handleClick.bind(this)
     }
       handleClick(event){
+        //making copy of event target and setting state
+        const {name,value} = event.target
+
        this.setState(
-         {[event.target.name ] : event.target.value}
+         {[name ] : value}
        )
       }
     render(){
