@@ -135,16 +135,19 @@ import todoData from './todoData';
     constructor(){
       super()
       this.state = {
-       
+       firstName : "",
+       lastName : "",
+       isFriendly : false,
+       gender : ""
       } 
       this.handleClick = this.handleClick.bind(this)
     }
       handleClick(event){
         //making copy of event target and setting state
-        const {name,value} = event.target
+        const {name,value,type,checked} = event.target
 
-       this.setState(
-         {[name ] : value}
+       type==="checkbox" ?this.setState({[name]:checked}) :this.setState(
+         {[name] : value}
        )
       }
     render(){
@@ -154,8 +157,28 @@ import todoData from './todoData';
         <br/>
         <input type = "text" name ="lastName" placeholder = "lastName.." onChange = {this.handleClick}/>
         <br/>
-
+        <textarea value={"some default value"}
+        onChange = {this.handleClick}
+        />
+         <br/>
+        <label>
+        <input type ="checkbox" name ="isFriendly"  checked ={this.state.isFriendly} onChange ={this.handleClick}/>
+        isFriendly
+        </label>
+         <br/>
+        <label>
+        <input type ="radio" name ="gender"  value ="male" checked ={this.state.gender === "male"} onChange ={this.handleClick}/>
+        Male
+        </label>
+         <br/>
+        <label>
+        <input type ="radio" name ="gender"  value ="female" checked ={this.state.gender === "female"} onChange ={this.handleClick}/>
+        Female
+        </label>
+      
         <h1> {this.state.firstName} {this.state.lastName}</h1>
+
+           <h2> you are a {this.state.gender} </h2>
        
       </form>
       )
