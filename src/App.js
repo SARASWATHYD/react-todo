@@ -177,8 +177,6 @@ import todoData from './todoData';
         </label>
       
         <h1> {this.state.firstName} {this.state.lastName}</h1>
-
-           <h2> you are a {this.state.gender} </h2>
        
       </form>
       )
