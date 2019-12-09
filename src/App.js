@@ -175,8 +175,24 @@ import todoData from './todoData';
         <input type ="radio" name ="gender"  value ="female" checked ={this.state.gender === "female"} onChange ={this.handleClick}/>
         Female
         </label>
+
+        <label>  Favoutrite color : </label>
+        <select
+        value = {this.state.favColor}
+        onChange= {this.handleClick}
+        name="favColor"
+        >
+        <option value = "blue">Blue</option>
+        <option value = "green">Green</option>
+        <option value = "yellow">Yellow</option>
+        <option value = "pink">Pink</option>
+
+
+        </select>
       
         <h1> {this.state.firstName} {this.state.lastName}</h1>
+        <h2> your gender is {this.state.gender}</h2>
+        <h2> you selected {this.state.favColor}</h2>
        
       </form>
       )
