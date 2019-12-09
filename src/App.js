@@ -131,71 +131,152 @@ import todoData from './todoData';
 
 //handling form with state 
 
- class App extends React.Component{
-    constructor(){
-      super()
-      this.state = {
-       firstName : "",
-       lastName : "",
-       isFriendly : false,
-       gender : ""
-      } 
-      this.handleClick = this.handleClick.bind(this)
-    }
-      handleClick(event){
-        //making copy of event target and setting state
-        const {name,value,type,checked} = event.target
+//  class App extends React.Component{
+//     constructor(){
+//       super()
+//       this.state = {
+//        firstName : "",
+//        lastName : "",
+//        isFriendly : false,
+//        gender : ""
+//       } 
+//       this.handleClick = this.handleClick.bind(this)
+//     }
+//       handleClick(event){
+//         //making copy of event target and setting state
+//         const {name,value,type,checked} = event.target
 
-       type==="checkbox" ?this.setState({[name]:checked}) :this.setState(
-         {[name] : value}
-       )
-      }
-    render(){
-      return(
-      <form> 
-        <input type = "text" name ="firstName" placeholder = "firstName.." onChange = {this.handleClick}/>
-        <br/>
-        <input type = "text" name ="lastName" placeholder = "lastName.." onChange = {this.handleClick}/>
-        <br/>
-        <textarea value={"some default value"}
-        onChange = {this.handleClick}
-        />
-         <br/>
-        <label>
-        <input type ="checkbox" name ="isFriendly"  checked ={this.state.isFriendly} onChange ={this.handleClick}/>
-        isFriendly
-        </label>
-         <br/>
-        <label>
-        <input type ="radio" name ="gender"  value ="male" checked ={this.state.gender === "male"} onChange ={this.handleClick}/>
-        Male
-        </label>
-         <br/>
-        <label>
-        <input type ="radio" name ="gender"  value ="female" checked ={this.state.gender === "female"} onChange ={this.handleClick}/>
-        Female
-        </label>
+//        type==="checkbox" ?this.setState({[name]:checked}) :this.setState(
+//          {[name] : value}
+//        )
+//       }
+//     render(){
+//       return(
+//       <form> 
+//         <input type = "text" name ="firstName" placeholder = "firstName.." onChange = {this.handleClick}/>
+//         <br/>
+//         <input type = "text" name ="lastName" placeholder = "lastName.." onChange = {this.handleClick}/>
+//         <br/>
+//         <textarea value={"some default value"}
+//         onChange = {this.handleClick}
+//         />
+//          <br/>
+//         <label>
+//         <input type ="checkbox" name ="isFriendly"  checked ={this.state.isFriendly} onChange ={this.handleClick}/>
+//         isFriendly
+//         </label>
+//          <br/>
+//         <label>
+//         <input type ="radio" name ="gender"  value ="male" checked ={this.state.gender === "male"} onChange ={this.handleClick}/>
+//         Male
+//         </label>
+//          <br/>
+//         <label>
+//         <input type ="radio" name ="gender"  value ="female" checked ={this.state.gender === "female"} onChange ={this.handleClick}/>
+//         Female
+//         </label>
 
-        <label>  Favoutrite color : </label>
-        <select
-        value = {this.state.favColor}
-        onChange= {this.handleClick}
-        name="favColor"
-        >
-        <option value = "blue">Blue</option>
-        <option value = "green">Green</option>
-        <option value = "yellow">Yellow</option>
-        <option value = "pink">Pink</option>
+//         <label>  Favoutrite color : </label>
+//         <select
+//         value = {this.state.favColor}
+//         onChange= {this.handleClick}
+//         name="favColor"
+//         >
+//         <option value = "blue">Blue</option>
+//         <option value = "green">Green</option>
+//         <option value = "yellow">Yellow</option>
+//         <option value = "pink">Pink</option>
 
 
-        </select>
+//         </select>
       
-        <h1> {this.state.firstName} {this.state.lastName}</h1>
-        <h2> your gender is {this.state.gender}</h2>
-        <h2> you selected {this.state.favColor}</h2>
+//         <h1> {this.state.firstName} {this.state.lastName}</h1>
+//         <h2> your gender is {this.state.gender}</h2>
+//         <h2> you selected {this.state.favColor}</h2>
        
-      </form>
+//       </form>
+//       )
+//   }
+// }
+
+//basic form 
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state={
+        firstName :"",
+        lastName :"",
+        age:18,
+        gender:"",
+        destination :"",
+        dietaryRestiction:[],
+        location :""
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick(event){
+            //making copy of event target and setting state
+    const {name,value,type,checked} = event.target
+    
+    type==="checkbox" ?this.setState({[name]:checked}) :this.setState(
+      {[name] : value}
       )
+    }
+  render(){
+    return (
+      <main>
+        <form >
+          <input 
+            type = "text" 
+            name = "firstName" 
+            value ={this.state.firstName} 
+            placeholder="First Name" 
+          /> <br/>
+          <input 
+            type = "text"
+             name = "lastName" 
+             value ={this.state.lastName} 
+             placeholder="Last Name" 
+            /> <br/>
+          <input 
+            type = "text" 
+            name = "age" 
+            value ={this.state.age}
+             placeholder="Age" 
+          /> <br/>
+          <label> 
+          <input type ="radio" name ="gender"  value ="male" checked ={this.state.gender === "male"} onChange ={this.handleClick}
+          /> 
+          Male 
+          </label>  <br/>
+          <label> 
+          <input type ="radio" name ="gender"  value ="female" checked ={this.state.gender === "female"} onChange ={this.handleClick}/> 
+          Female </label> <br/>
+          <label>  Please select your location : </label>
+          <select
+          value = {this.state.location}
+          onChange= {this.handleClick}
+          name="location"
+        >
+        <option value = "chennai">Chennai</option>
+        <option value = "banglore">Banglore</option>
+        <option value = "pondicherry">Pondicherry</option>
+        <option value = "kerla">Kerla</option>
+
+
+         </select> 
+         <br/>
+         <button> submit </button>
+          <br/>
+        </form>
+        <hr/>
+        <h2> Entered Information</h2>
+        <p> Your name :: {this.state.firstName} {this.state.lastName}</p>
+        <p> Your Age :: {this.state.age}</p>
+        <p> Your gender :: {this.state.gender}</p>
+        <p> Your destination :: {this.state.location}</p>
+      </main>
+    )
   }
 }
 
