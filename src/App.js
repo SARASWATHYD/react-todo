@@ -231,18 +231,22 @@ class App extends React.Component{
             name = "firstName" 
             value ={this.state.firstName} 
             placeholder="First Name" 
+            onChange = {this.handleClick}
           /> <br/>
+          
           <input 
             type = "text"
              name = "lastName" 
              value ={this.state.lastName} 
              placeholder="Last Name" 
+             onChange = {this.handleClick}
             /> <br/>
           <input 
             type = "text" 
             name = "age" 
             value ={this.state.age}
              placeholder="Age" 
+             onChange = {this.handleClick}
           /> <br/>
           <label> 
           <input type ="radio" name ="gender"  value ="male" checked ={this.state.gender === "male"} onChange ={this.handleClick}
