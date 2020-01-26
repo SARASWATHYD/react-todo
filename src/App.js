@@ -209,7 +209,11 @@ class App extends React.Component{
         age:18,
         gender:"",
         destination :"",
-        dietaryRestiction:[],
+        dietaryRestiction:{
+          isVegan : false,
+          isKosher :false,
+          isLactoseFree : false
+        },
         location :""
     }
     this.handleClick = this.handleClick.bind(this)
@@ -269,6 +273,39 @@ class App extends React.Component{
 
 
          </select> 
+         <br/>
+         <label>
+           <input 
+           name = "isVegan"
+           type = "checkbox"
+           onChange = {this.handleClick}
+           checked = {this.state.dietaryRestiction}
+           />
+         isVegan?
+         </label>
+        
+         <br/>
+         <label>
+           <input 
+           name = "isKosher"
+           type = "checkbox"
+           onChange = {this.handleClick}
+           checked = {this.state.dietaryRestiction}
+           />
+          isKosher?
+         </label>
+        
+         <br/>
+         <label>
+           <input 
+           name = "isLactoseFree"
+           type = "checkbox"
+           onChange = {this.handleClick}
+           checked = {this.state.dietaryRestiction}
+           />
+           isLactoseFree?
+         </label>
+        
          <br/>
          <button> submit </button>
           <br/>
